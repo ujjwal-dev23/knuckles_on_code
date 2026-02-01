@@ -135,8 +135,11 @@ const entriesWithContent = await Promise.all(
             <li class="border-b hover:opacity-85 transition-opacity border-base-300 last:border-b-0">
               <details class="collapse">
                 <summary class="collapse-title pe-5">
-                  <div class="list-row p-0 items-center after:hidden">
-                    <div>
+                  {/* <div class="list-col sm:list-row p-0 items-start sm:items-center after:hidden"> Fixed DaisyUI's list-col and list-row responsiveness shenanigans by manually creating the layout*/}
+                  <div class="flex flex-wrap gap-4 p-0 items-start 
+              sm:grid sm:grid-cols-[auto_1fr_auto] sm:items-center sm:gap-4 
+              after:hidden sm:flex-nowrap">
+                    <div class="order-2 sm:order-first">
                       {entry.data.logo && (
                         <div class="avatar">
                           <div class="w-10 mask mask-squircle">
@@ -150,14 +153,14 @@ const entriesWithContent = await Promise.all(
                       )}
                     </div>
 
-                    <div>
+                    <div class="min-w-0 order-1 flex-1">
                       <h3 class="font-bold text-lg">{entry.data.title}</h3>
                       <p class={`text-${color} font-semibold text-sm`}>
                         {entry.data.subtitle}
                       </p>
                     </div>
 
-                    <div class="text-sm text-base-content/70 font-mono whitespace-nowrap">
+                    <div class="text-sm text-base-content/70 font-mono whitespace-nowrap order-3 w-full sm:w-auto">
                       {formatPeriod(entry.data.startDate, entry.data.endDate)}
                     </div>
                   </div>
